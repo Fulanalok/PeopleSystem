@@ -1,68 +1,66 @@
-package tech.angelofdiasg.pessoas;
+    package tech.angelofdiasg.pessoas;
 
-import tech.angelofdiasg.composicoes.Cargo;
-import tech.angelofdiasg.composicoes.Endereco;
-import tech.angelofdiasg.composicoes.Telefone;
-import tech.angelofdiasg.estruturasdedados.ListaDeTelefonesNaoOrdenados;
-import tech.angelofdiasg.interfaces.Cadastramento;
+    import tech.angelofdiasg.composicoes.Cargo;
+    import tech.angelofdiasg.composicoes.Endereco;
+    import tech.angelofdiasg.composicoes.Telefone;
+    import tech.angelofdiasg.interfaces.Cadastramento;
 
-import java.time.LocalDate;
+    import java.time.LocalDate;
 
-public class Funcionario extends Pessoa {
-    private int matricula;
-    private Cargo    cargo;
-    private double salario;
-    private LocalDate dataAdmissao;
+    public class Funcionario extends Pessoa implements Cadastramento {
+        private int matricula;
+        private Cargo cargo;
+        private double salario;
+        private LocalDate dataAdmissao;
 
-    public Funcionario() {
-    }
-    public Funcionario(String nome, LocalDate dataNascimento, Endereco endereco, ListaDeTelefonesNaoOrdenados telsContato, int matricula,
-                       Cargo cargo, double salario, LocalDate dataAdmissao) {
-        super(nome, dataNascimento, endereco, telsContato);
-        this.matricula = matricula;
-        this.cargo = cargo;
-        this.salario = salario;
-        this.dataAdmissao = dataAdmissao;
-    }
+        public Funcionario() {
 
-    public void reajustarSalario(double percentual){
-        this.salario = this.salario * (1 + (percentual/100));
-    }
-    public void promover(Cargo novoCargo){
-        this.cargo = novoCargo;
-    }
-    public int getMatricula() {
-        return matricula;
-    }
+        }
+        public Funcionario(String nome, LocalDate dataNascimento, Endereco endereco, Telefone telsContato,
+                           int matricula,
+                           Cargo cargo, double salario, LocalDate dataAdmissao) {
+            super(nome, dataNascimento, endereco, telsContato);
+            this.matricula = matricula;
+            this.cargo = cargo;
+            this.salario = salario;
+            this.dataAdmissao = dataAdmissao;
+        }
 
-    public void setMatricula(int matricula) {
-        this.matricula = matricula;
-    }
+        public void reajustarSalario(double percentual){
+            this.salario = this.salario * (1 + (percentual/100));
+        }
+        public void promover(Cargo novoCargo){
+            this.cargo = novoCargo;
+        }
+        public int getMatricula() {
+            return matricula;
+        }
 
-    public Cargo getCargo() {
-        return cargo;
-    }
+        public void setMatricula(int matricula) {
+            this.matricula = matricula;
+        }
 
-    public void setCargo(Cargo cargo) {
-        this.cargo = cargo;
-    }
+        public Cargo getCargo() {
+            return cargo;
+        }
 
-    public double getSalario() {
-        return salario;
-    }
+        public void setCargo(Cargo cargo) {
+            this.cargo = cargo;
+        }
 
-    public void setSalario(double salario) {
-        this.salario = salario;
-    }
+        public double getSalario() {
+            return salario;
+        }
 
-    public LocalDate getDataAdmissao() {
-        return dataAdmissao;
-    }
+        public void setSalario(double salario) {
+            this.salario = salario;
+        }
 
-    public void setDataAdmissao(LocalDate dataAdmissao) {
-        this.dataAdmissao = dataAdmissao;
-    }
+        public LocalDate getDataAdmissao() {
+            return dataAdmissao;
+        }
 
-    public void cadastrarFuncionario() {
+        public void setDataAdmissao(LocalDate dataAdmissao) {
+            this.dataAdmissao = dataAdmissao;
+        }
     }
-}

@@ -1,26 +1,24 @@
 package tech.angelofdiasg.pessoas;
 
 import tech.angelofdiasg.composicoes.*;
-import tech.angelofdiasg.estruturasdedados.ListaDeTelefonesNaoOrdenados;
 import tech.angelofdiasg.interfaces.Cadastramento;
 
 import java.time.LocalDate;
 
-public class Cliente extends Pessoa {
+public class Cliente extends Pessoa implements Cadastramento {
+
     private String codigo;
     private Profissao profissao;
     public Cliente() {
         System.out.println("Criando cliente" +
                 " sem atributos!");
     }
-
     public Cliente(String nome, LocalDate dataNascimento,
-                   Endereco endereco, ListaDeTelefonesNaoOrdenados telsContato, String codigo, Profissao profissao) {
+                   Endereco endereco, Telefone telsContato, String codigo, Profissao profissao) {
         super(nome, dataNascimento, endereco, telsContato);
         this.codigo = codigo;
         this.profissao = profissao;
     }
-
 
     public String getCodigo() {
         return codigo;
@@ -36,12 +34,5 @@ public class Cliente extends Pessoa {
 
     public void setProfissao(Profissao profissao) {
         this.profissao = profissao;
-    }
-
-    public void cadastrar() {
-
-    }
-
-    public void cadastrarCliente() {
     }
 }

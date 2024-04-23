@@ -1,8 +1,6 @@
 package tech.angelofdiasg.pessoas;
 
-import tech.angelofdiasg.composicoes.Endereco;
-import tech.angelofdiasg.estruturasdedados.*;
-
+import tech.angelofdiasg.composicoes.*;
 import java.time.LocalDate;
 import java.time.Period;
 
@@ -10,19 +8,25 @@ public class Pessoa {
     private String nome;
     private LocalDate dataNascimento;
     private Endereco endereco;
-    private ListaDeTelefonesNaoOrdenados telsContato;
-    public Pessoa(){
+    private Telefone telsContato;
+    public Pessoa(String nome, LocalDate dataNascimento, tech.angelofdiasg.composicoes.Endereco endereco, Telefone telsContato){
         System.out.println("Criando uma pessoa" +
                 " sem atributos!");
     }
+
+    public Pessoa() {
+
+    }
     public Pessoa(String nome, LocalDate dataNascimento,
-                  Endereco endereco, ListaDeTelefonesNaoOrdenados telsContato) {
+                  Endereco endereco, Telefone telsContato) {
         this.nome = nome;
         this.dataNascimento = dataNascimento;
         this.endereco = endereco;
         this.telsContato = telsContato;
     }
+    public void cadastrar(){
 
+    }
     public int obterIdade(){
         int idade = 0;
         LocalDate dataAtual = LocalDate.now();
@@ -56,11 +60,11 @@ public class Pessoa {
         this.endereco = endereco;
     }
 
-    public ListaDeTelefonesNaoOrdenados getTelsContato() {
+    public Telefone getTelsContato() {
         return telsContato;
     }
 
-    public void setTelsContato(ListaDeTelefonesNaoOrdenados telsContato) {
+    public void setTelsContato(Telefone telsContato) {
         this.telsContato = telsContato;
     }
 }
