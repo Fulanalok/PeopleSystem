@@ -32,6 +32,7 @@ public class Pessoa {
         return idade;
     }
 
+    
     public String getNome() {
         return nome;
     }
@@ -64,3 +65,36 @@ public class Pessoa {
         this.telsContato = telsContato;
     }
 }
+
+public void cadastrar() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Digite o nome da pessoa: ");
+        this.nome = scanner.nextLine();
+
+        System.out.println("Digite a data de nascimento: " );
+        this.dataNascimento = LocalDate.ofEpochDay(scanner.nextInt());
+
+        System.out.println("Digite o endereco: ");
+        System.out.println("Rua: ");
+        String rua = scanner.nextLine();
+        System.out.println("Numero: ");
+        String numero = scanner.nextLine();
+        System.out.println("CEP: ");
+        String cep = scanner.nextLine();
+        System.out.println("Cidade: ");
+        String cidade = scanner.nextLine();
+        System.out.println("Estado: ");
+        String estado = scanner.nextLine();
+        System.out.println("Pais: ");
+        String pais = scanner.nextLine();
+        this.endereco = new Endereco(rua, numero, cep, cidade, estado, pais);
+
+        System.out.println("Digite os numeros de telefone: " );
+        String telefonesStr = scanner.nextLine();
+        String[] telefones = telefonesStr.split(",");
+        this.telsContato = new ListaDeTelefonesNaoOrdenados();
+        for (String telefone : telefones) {
+            telefone = String.valueOf(new Telefone());
+            this.telsContato.addTelefone(telefone.trim());
+        }
+    }
