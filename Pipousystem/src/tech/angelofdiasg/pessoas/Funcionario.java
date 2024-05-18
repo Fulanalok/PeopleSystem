@@ -1,0 +1,82 @@
+package tech.angelofdiasg.pessoas;
+
+import tech.angelofdiasg.composicoes.Cargo;
+import tech.angelofdiasg.composicoes.Endereco;
+import tech.angelofdiasg.composicoes.Telefone;
+import tech.angelofdiasg.estruturasdedados.ListaDeTelefonesNaoOrdenados;
+import tech.angelofdiasg.interfaces.Cadastramento;
+
+import java.time.LocalDate;
+import java.time.Period;
+
+public class Funcionario extends Pessoa implements Cadastramento {
+    private int matricula;
+    private Cargo cargo;
+    private double salario;
+    private LocalDate dataAdmissao;
+
+    public Funcionario() {
+    }
+    public Funcionario(String nome, LocalDate dataNascimento, Endereco endereco, ListaDeTelefonesNaoOrdenados telsContato, int matricula,
+                       Cargo cargo, double salario, LocalDate dataAdmissao) {
+        super(nome, dataNascimento, endereco, telsContato);
+        this.matricula = matricula;
+        this.cargo = cargo;
+        this.salario = salario;
+        this.dataAdmissao = dataAdmissao;
+    }
+
+    public String calcularTempoEmpresa() {
+        LocalDate dataAtual = LocalDate.now();
+        Period periodo = Period.between(dataAdmissao, dataAtual);
+
+        int anos = periodo.getYears();
+        int meses = periodo.getMonths();
+
+        String tempoEmpresa = String.format("%anos e %meses", anos, meses);
+        return tempoEmpresa;
+    }
+
+    public void reajustarSalario(double percentual){
+        this.salario = this.salario * (1 + (percentual/100));
+    }
+    public void promover(Cargo novoCargo){
+        this.cargo = novoCargo;
+    }
+    public int getMatricula() {
+        return matricula;
+    }
+
+    public void setMatricula(int matricula) {
+        this.matricula = matricula;
+    }
+
+    public Cargo getCargo() {
+        return cargo;
+    }
+
+    public void setCargo(Cargo cargo) {
+        this.cargo = cargo;
+    }
+
+    public double getSalario() {
+        return salario;
+    }
+
+    public void setSalario(double salario) {
+        this.salario = salario;
+    }
+
+    public LocalDate getDataAdmissao() {
+        return dataAdmissao;
+    }
+
+    public void setDataAdmissao(LocalDate dataAdmissao) {
+        this.dataAdmissao = dataAdmissao;
+    }
+
+    @Override
+    public void cadastrar() {
+
+    }
+}
